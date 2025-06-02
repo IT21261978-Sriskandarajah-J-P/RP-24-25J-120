@@ -37,7 +37,7 @@ const allDocuments = {
     { name: '24-25J-120 Final Presentation', file: '/doc/final-presentation/RP-24-25J-120_Final_Presentation.pptx' },
   ],
   'Logbook': [
-    { name: 'Logbook IT20601638', file: '/doc/logbook/IT20601638_Parthika.K_Logbook.pdf' },
+    { name: 'Logbook IT20601638', file: '/doc/logbook/IT20601638_Logbook.pdf' },
     { name: 'Logbook IT21282072', file: '/doc/logbook/IT21282072_Logbook.pdf' },
     { name: 'Logbook IT21261978', file: '/doc/logbook/IT21261978_Logbook.pdf' },
     { name: 'Logbook IT21192982', file: '/doc/logbook/IT21192982_Logbook.pdf' },
