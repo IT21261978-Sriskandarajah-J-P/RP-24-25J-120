@@ -1,10 +1,5 @@
 'use client';
 import {
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-  Github,
   MapPin,
   Mail,
   Phone,
@@ -17,7 +12,7 @@ export default function Footer() {
         <div>
           <h3 className="text-xl font-bold text-gray-800">SDN IIDS ML</h3>
           <p className="mt-2 text-sm">
-            "Preventing Attack in SDN environment. Developed by SLIIT students."
+            &quot;Preventing Attack in SDN environment. Developed by SLIIT students.&quot;
           </p>
           <div className="mt-3 space-y-1 text-sm">
             <p className="flex items-center gap-2"><Phone size={16} /> +94 77 12348672</p>
@@ -52,16 +47,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
-          <h4 className="font-semibold text-gray-900">Follow Us</h4>
-          <div className="flex gap-4 mt-2">
-            <a href="#" className="text-cyan-600 hover:scale-110 transition"><Twitter size={20} /></a>
-            <a href="#" className="text-cyan-600 hover:scale-110 transition"><Facebook size={20} /></a>
-            <a href="#" className="text-cyan-600 hover:scale-110 transition"><Instagram size={20} /></a>
-            <a href="https://github.com/your-repo" className="text-cyan-600 hover:scale-110 transition"><Github size={20} /></a>
-            <a href="https://linkedin.com/in/your-link" className="text-cyan-600 hover:scale-110 transition"><Linkedin size={20} /></a>
-          </div>
-        </div>
+        
       </div>
 
       <div className="mt-10 border-t pt-4 pb-6 text-center text-sm text-gray-500 bg-gradient-to-t from-cyan-100 via-transparent to-white">

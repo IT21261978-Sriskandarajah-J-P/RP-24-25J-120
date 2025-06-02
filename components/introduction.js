@@ -52,7 +52,7 @@ export default function Introduction() {
           className="waving-subtext sm:text-3xl font-semibold text-gray-100 mb-8"
         >
           <span className="text-black font-[var(--font-poppins)]">
-            "Software Defined Networking based Intelligence Intrusion Detection System using Machine Learning"
+            &quot;Software Defined Networking based Intelligence Intrusion Detection System using Machine Learning&quot;
           </span>
           <br />
         </motion.p>

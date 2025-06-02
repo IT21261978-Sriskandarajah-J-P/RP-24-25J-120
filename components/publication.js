@@ -62,7 +62,7 @@ export default function Publication() {
         </motion.p>
 
         <motion.p variants={childVariants} className="text-lg sm:text-xl text-white">
-          <span className="italic">"ICAC 2025"</span><br />
+          <span className="italic">&quot;ICAC 2025&quot;</span><br />
          
          
         </motion.p>

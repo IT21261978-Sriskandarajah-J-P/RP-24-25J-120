@@ -83,6 +83,66 @@ const milestones = [
   },
 ];
 
+// Child component for each milestone item with hooks inside
+function MilestoneItem({ item, idx }) {
+  const isLeft = idx % 2 === 0;
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [inView, controls]);
+
+  return (
+    <motion.div
+      key={idx}
+      ref={ref}
+      variants={{
+        hidden: { opacity: 0, y: isLeft ? 80 : -80 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      initial="hidden"
+      animate={controls}
+      transition={{
+        duration: 0.8,
+        ease: 'easeOut',
+        delay: idx * 0.1,
+      }}
+      className={`relative z-10 flex flex-col md:flex-row ${
+        isLeft ? 'md:justify-start' : 'md:justify-end'
+      }`}
+    >
+      {/* Timeline Dot */}
+      <motion.div
+        className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-cyan-300 border-4 border-white rounded-full z-10 shadow top-6"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{
+          type: 'spring',
+          stiffness: 300,
+          damping: 20,
+          delay: idx * 0.1,
+        }}
+      />
+
+      {/* Card */}
+      <div className={`md:w-1/2 px-4 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
+        <div className="bg-white text-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
+          <p className="text-sm font-medium text-gray-500 mb-2">{item.date}</p>
+          <p className="text-base leading-relaxed">{item.description}</p>
+          <p className="text-sm font-semibold text-right mt-4">{item.marks}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Milestones() {
   return (
     <section
@@ -100,72 +160,9 @@ export default function Milestones() {
 
           {/* Timeline Items */}
           <div className="flex flex-col gap-12">
-            {milestones.map((item, idx) => {
-              const isLeft = idx % 2 === 0;
-              const { ref, inView } = useInView({
-                triggerOnce: true,
-                threshold: 0.2,
-              });
-              const controls = useAnimation();
-
-              useEffect(() => {
-                if (inView) {
-                  controls.start('visible');
-                }
-              }, [inView, controls]);
-
-              return (
-                <motion.div
-                  key={idx}
-                  ref={ref}
-                  variants={{
-                    hidden: { opacity: 0, y: isLeft ? 80 : -80 },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  initial="hidden"
-                  animate={controls}
-                  transition={{
-                    duration: 0.8,
-                    ease: 'easeOut',
-                    delay: idx * 0.1,
-                  }}
-                  className={`relative z-10 flex flex-col md:flex-row ${
-                    isLeft ? 'md:justify-start' : 'md:justify-end'
-                  }`}
-                >
-                  {/* Timeline Dot */}
-                  <motion.div
-                    className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-cyan-300 border-4 border-white rounded-full z-10 shadow top-6"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 300,
-                      damping: 20,
-                      delay: idx * 0.1,
-                    }}
-                  />
-
-                  {/* Card */}
-                  <div
-                    className={`md:w-1/2 px-4 ${
-                      isLeft ? 'md:pr-12' : 'md:pl-12'
-                    }`}
-                  >
-                    <div className="bg-white text-gray-800 p-6 rounded-lg shadow-lg">
-                      <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
-                      <p className="text-sm font-medium text-gray-500 mb-2">
-                        {item.date}
-                      </p>
-                      <p className="text-base leading-relaxed">{item.description}</p>
-                      <p className="text-sm font-semibold text-right mt-4">
-                        {item.marks}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {milestones.map((item, idx) => (
+              <MilestoneItem key={idx} item={item} idx={idx} />
+            ))}
           </div>
         </div>
       </div>
