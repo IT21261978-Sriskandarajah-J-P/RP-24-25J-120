@@ -64,7 +64,7 @@ const milestones = [
     title: 'Log Book',
     date: 'June 2025',
     description:
-      'Submission of the research logbook and status document 2 which provides an overview of all key tasks conducted by members during the implementation phase of the research. Submission of research website for evaluation.',
+      'Submission of the research logbook and status document 2 which provides an overview of all key tasks conducted by members during the implementation phase of the research.',
     marks: 'Marks Allocation-3%',
   },
   {
@@ -102,14 +102,15 @@ export default function Milestones() {
           <div className="flex flex-col gap-12">
             {milestones.map((item, idx) => {
               const isLeft = idx % 2 === 0;
-              const { ref, inView } = useInView({ threshold: 0.2 });
+              const { ref, inView } = useInView({
+                triggerOnce: true,
+                threshold: 0.2,
+              });
               const controls = useAnimation();
 
               useEffect(() => {
                 if (inView) {
                   controls.start('visible');
-                } else {
-                  controls.start('hidden');
                 }
               }, [inView, controls]);
 
@@ -137,18 +138,29 @@ export default function Milestones() {
                     className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-cyan-300 border-4 border-white rounded-full z-10 shadow top-6"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 300,
+                      damping: 20,
+                      delay: idx * 0.1,
+                    }}
                   />
 
                   {/* Card */}
-                  <div className={`md:w-1/2 px-4 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
+                  <div
+                    className={`md:w-1/2 px-4 ${
+                      isLeft ? 'md:pr-12' : 'md:pl-12'
+                    }`}
+                  >
                     <div className="bg-white text-gray-800 p-6 rounded-lg shadow-lg">
                       <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
                       <p className="text-sm font-medium text-gray-500 mb-2">
                         {item.date}
                       </p>
                       <p className="text-base leading-relaxed">{item.description}</p>
-                      <p className="text-sm font-semibold text-right mt-4">{item.marks}</p>
+                      <p className="text-sm font-semibold text-right mt-4">
+                        {item.marks}
+                      </p>
                     </div>
                   </div>
                 </motion.div>

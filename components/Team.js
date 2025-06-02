@@ -60,33 +60,14 @@ export default function Team() {
           >
             <img
               src={member.image}
-              alt={member.name}
+              alt={`Photo of ${member.name}`}
               className="w-28 h-28 object-cover rounded-full shadow-md mb-4"
             />
+
             <h3 className="font-bold text-lg text-center">{member.name}</h3>
             <p className="text-sm text-gray-600">{member.role}</p>
 
             <div className="flex gap-3 mt-4">
-              {member.linkedin && (
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded border hover:bg-blue-600 hover:text-white transition"
-                >
-                  <Linkedin size={18} />
-                </a>
-              )}
-              {member.facebook && (
-                <a
-                  href={member.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded border hover:bg-blue-600 hover:text-white transition"
-                >
-                  <Facebook size={18} />
-                </a>
-              )}
               {member.email && (
                 <a
                   href={member.email}
