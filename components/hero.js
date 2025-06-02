@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { motion, useAnimation } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -38,20 +39,19 @@ export default function Hero() {
     }
   };
 
-  // Handle mouse move for extra parallax effects
-  const handleMouseMove = (e) => {
-    const { clientX, clientY } = e;
-    const x = (clientX - window.innerWidth / 2) / 10;
-    const y = (clientY - window.innerHeight / 2) / 10;
-
-    controls.start({
-      x: x,
-      y: y,
-      transition: { duration: 0.1 },
-    });
-  };
-
   useEffect(() => {
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      const x = (clientX - window.innerWidth / 2) / 10;
+      const y = (clientY - window.innerHeight / 2) / 10;
+
+      controls.start({
+        x: x,
+        y: y,
+        transition: { duration: 0.1 },
+      });
+    };
+
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
 
@@ -59,7 +59,7 @@ export default function Hero() {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [controls]);
 
   // Split text into words and letters for animation
   const titleText = 'SDN IIDS';
@@ -80,11 +80,15 @@ export default function Hero() {
           ease: 'linear',
         }}
       >
-        <div className="absolute inset-0 bg-[#060d23] backdrop-blur-3xl">
-          <img
+         {/* Container for Image must be relative */}
+        <div className="relative h-full w-full bg-[#060d23] backdrop-blur-3xl">
+          <Image
             src="/assets/bg.jpg"
             alt="Hero Background"
-            className="w-full h-full object-cover opacity-20"
+            layout="fill"
+            objectFit="cover"
+            className="opacity-20"
+            priority
           />
         </div>
       </motion.div>
@@ -127,10 +131,8 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
         >
-          "In the symphony of technology, Software-Defined Networking conducts the flow, intelligent infrastructure builds the stage, and machine learning composes the future."
+          &quot;In the symphony of technology, Software-Defined Networking conducts the flow, intelligent infrastructure builds the stage, and machine learning composes the future.&quot;
         </motion.p>
-
-       
       </motion.div>
 
       {/* Mouse interaction for foreground movement */}
