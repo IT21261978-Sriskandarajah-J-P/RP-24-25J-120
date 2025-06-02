@@ -38,9 +38,9 @@ const allDocuments = {
   ],
   'Logbook': [
     { name: 'Logbook IT20601638', file: '/doc/logbook/IT20601638_Parthika.K_Logbook.pdf' },
-    { name: 'Logbook IT21282072', file: '/doc/logbook/IT21282072_Satkurulingam.S_Logbook.pdf' },
-    { name: 'Logbook IT21261978', file: '/doc/logbook/IT21261978_Sriskandarajah J.P_Logbook.pdf' },
-    { name: 'Logbook IT21192982', file: '/doc/logbook/IT21192982_Dassanayake E.D_Logbook.pdf' },
+    { name: 'Logbook IT21282072', file: '/doc/logbook/IT21282072_Logbook.pdf' },
+    { name: 'Logbook IT21261978', file: '/doc/logbook/IT21261978_Logbook.pdf' },
+    { name: 'Logbook IT21192982', file: '/doc/logbook/IT21192982_Logbook.pdf' },
   ],
 };
 
